@@ -1,0 +1,47 @@
+---
+import Layout from '../layouts/Layout.astro'
+const random = Math.floor(Math.random()*10)
+const fortune = random<1?0:random<3?1:random<7?2:random<9?3:4
+const kuji = [{
+		text:"大吉",design:"font-bold text-orange-400",
+		messages:["絶好調です！","何をしてもうまくいくでしょう！","最高の一日を過ごせるはずです！","身近なところに幸運が散らばっているかも？"]
+	},{
+		text:"中吉",design:"font-semibold text-yellow-400",
+		messages:["諦めなければ夢が叶います！","諦めずに夢に向かって突き進みましょう！","日々の何気ないことにも気を配りましょう！"]
+	},{
+		text:"吉",design:"text-sky-300",
+		messages:["一日のうちの小さな幸せに感謝しましょう！","いつか大きな幸せが訪れるはずです！","新たなことに挑戦してみるのもいいかもしれません。"]
+	},{
+		text:"小吉",design:"font-light text-blue-400",
+		messages:["生活習慣を崩さないように気をつけましょう。","生活習慣が整っていれば幸運が訪れるはずです。","幸運は自分で勝ち取るものでもあるのです！"]
+	},{
+		text:"凶",
+		design:"font-extralight text-purple-500",
+		messages:["失敗することが多いかもしれません。","めげずに色々なことに挑戦しましょう。","ラッキーアイテムは「友達」です！"]
+}]
+---
+
+<Layout>
+	<div class="w-full h-full bg-yellow-50 font-fude flex justify-center items-center text-5xl">
+		<div>
+			<div class="flex justify-center items-center">
+				あなたの運勢は
+				<div class={`animate-fadein text-9xl ${kuji[fortune].design}`}>
+					{kuji[fortune].text}
+				</div>
+				です
+			</div>
+			<div class="flex justify-center items-center animate-fadein mt-10 text-4xl">
+				<div>
+					「{kuji[fortune].text}」だったあなたは...
+				</div>
+			</div>
+			<div class="flex justify-center items-center animate-fadein mt-4 text-3xl">
+				<ul>
+					{kuji[fortune].messages.map(e => <li class="list-disc">{e}</li>)}
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</Layout>
